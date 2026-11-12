@@ -9,7 +9,7 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend & Data", "skills.tools": "Tools & Languages", "skills.spanish": "Spanish · Native", "skills.english": "English · Advanced",
     "contact.label": "04 / GET IN TOUCH", "contact.title": "Have an idea?", "contact.titleAccent": "Let’s build it.",
     "contact.description": "If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.",
-    "terminal.section": "LABORATORY", "terminal.heading": "A small interactive profile.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Full-Stack Developer\"", "terminal.location": "\"Dominican Republic / United States\"", "terminal.focus": "\"e-commerce & useful digital products\"", "terminal.status": "\"shipping reliable software with intention\"", "terminal.interactive": "→ Type help to explore Limberth's profile", "terminal.help": "Commands available: cv · contact · game · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.gameWin": "Correct! You solved it in {attempts} attempts.", "terminal.gameInvalid": "That answer does not match the riddle. Try again or type exit.", "terminal.gameExit": "Riddle ended. Type game whenever you want to play again.", "terminal.unknown": "Command not found. Type help to see available commands.",
+    "terminal.section": "LABORATORY", "terminal.heading": "A small interactive profile.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Full-Stack Developer\"", "terminal.location": "\"Dominican Republic / United States\"", "terminal.focus": "\"e-commerce & useful digital products\"", "terminal.status": "\"shipping reliable software with intention\"", "terminal.interactive": "→ Type help to explore Limberth's profile", "terminal.help": "Commands available: cv · contact · game · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.gameWin": "Correct! You solved it in {attempts} attempts.", "terminal.gameChoice": "[R]etry or [E]xit?", "terminal.gameChoiceInvalid": "Choose R to retry or E to exit.", "terminal.gameInvalid": "That answer does not match the riddle. Try again or type exit.", "terminal.gameExit": "Riddle ended. Type game whenever you want to play again.", "terminal.unknown": "Command not found. Type help to see available commands.",
     "footer.tagline": "Designed & built with intention.", "footer.top": "Back to top",
   },
   es: {
@@ -22,7 +22,7 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend y datos", "skills.tools": "Herramientas e idiomas", "skills.spanish": "Español · Nativo", "skills.english": "Inglés · Avanzado",
     "contact.label": "04 / CONTACTO", "contact.title": "¿Tienes una idea?", "contact.titleAccent": "Construyámosla.",
     "contact.description": "Si conoces una oportunidad, tienes una pregunta o simplemente quieres saludar, escríbeme.",
-    "terminal.section": "LABORATORIO", "terminal.heading": "Un pequeño perfil interactivo.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Desarrollador Full-Stack\"", "terminal.location": "\"República Dominicana / Estados Unidos\"", "terminal.focus": "\"e-commerce y productos digitales útiles\"", "terminal.status": "\"entregando software confiable con intención\"", "terminal.interactive": "→ Escribe help para explorar el perfil de Limberth", "terminal.help": "Comandos disponibles: cv · contact · game · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.gameWin": "¡Correcto! Lo resolviste en {attempts} intentos.", "terminal.gameInvalid": "Esa respuesta no coincide con la adivinanza. Inténtalo otra vez o escribe exit.", "terminal.gameExit": "Adivinanza terminada. Escribe game cuando quieras volver a jugar.", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
+    "terminal.section": "LABORATORIO", "terminal.heading": "Un pequeño perfil interactivo.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Desarrollador Full-Stack\"", "terminal.location": "\"República Dominicana / Estados Unidos\"", "terminal.focus": "\"e-commerce y productos digitales útiles\"", "terminal.status": "\"entregando software confiable con intención\"", "terminal.interactive": "→ Escribe help para explorar el perfil de Limberth", "terminal.help": "Comandos disponibles: cv · contact · game · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.gameWin": "¡Correcto! Lo resolviste en {attempts} intentos.", "terminal.gameChoice": "[R]epetir o [S]alir?", "terminal.gameChoiceInvalid": "Elige R para repetir o S para salir.", "terminal.gameInvalid": "Esa respuesta no coincide con la adivinanza. Inténtalo otra vez o escribe exit.", "terminal.gameExit": "Adivinanza terminada. Escribe game cuando quieras volver a jugar.", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
     "footer.tagline": "Diseñado y construido con intención.", "footer.top": "Volver arriba",
   },
 };
@@ -51,6 +51,7 @@ const terminalScreen = document.querySelector("#terminal-output");
 const terminalOutput = document.querySelector("#terminal-results");
 let currentRiddle = null;
 let gameAttempts = 0;
+let gameDecisionPending = false;
 
 const savedTheme = window.localStorage.getItem("portfolio-theme");
 if (savedTheme === "light") {
@@ -124,6 +125,15 @@ function addTerminalLine(text, className = "terminal-output-line") {
   terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
 
+function startRiddleGame() {
+  terminalOutput.replaceChildren();
+  terminalScreen.classList.add("game-mode");
+  const riddles = mathRiddles[language];
+  currentRiddle = riddles[Math.floor(Math.random() * riddles.length)];
+  gameAttempts = 0;
+  addTerminalLine(currentRiddle.prompt, "terminal-success");
+}
+
 terminalForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const command = terminalInput.value.trim().toLowerCase();
@@ -134,12 +144,29 @@ terminalForm.addEventListener("submit", (event) => {
     terminalOutput.replaceChildren();
     currentRiddle = null;
     gameAttempts = 0;
+    gameDecisionPending = false;
     terminalScreen.classList.remove("game-mode");
+    return;
+  }
+  if (gameDecisionPending) {
+    if (command === "r") {
+      gameDecisionPending = false;
+      startRiddleGame();
+      return;
+    }
+    if (["e", "s", "exit", "salir"].includes(command)) {
+      gameDecisionPending = false;
+      terminalScreen.classList.remove("game-mode");
+      addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
+      return;
+    }
+    addTerminalLine(translations[language]["terminal.gameChoiceInvalid"], "terminal-muted");
     return;
   }
   if (currentRiddle !== null && command === "exit") {
     currentRiddle = null;
     gameAttempts = 0;
+    gameDecisionPending = false;
     terminalScreen.classList.remove("game-mode");
     addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
     return;
@@ -154,7 +181,8 @@ terminalForm.addEventListener("submit", (event) => {
     addTerminalLine(translations[language]["terminal.gameWin"].replace("{attempts}", gameAttempts), "terminal-success");
     currentRiddle = null;
     gameAttempts = 0;
-    terminalScreen.classList.remove("game-mode");
+    gameDecisionPending = true;
+    addTerminalLine(translations[language]["terminal.gameChoice"], "terminal-success");
     return;
   }
   if (command === "help") {
@@ -162,12 +190,8 @@ terminalForm.addEventListener("submit", (event) => {
     return;
   }
   if (command === "game") {
-    terminalOutput.replaceChildren();
-    terminalScreen.classList.add("game-mode");
-    const riddles = mathRiddles[language];
-    currentRiddle = riddles[Math.floor(Math.random() * riddles.length)];
-    gameAttempts = 0;
-    addTerminalLine(currentRiddle.prompt, "terminal-success");
+    gameDecisionPending = false;
+    startRiddleGame();
     return;
   }
   addTerminalLine(`$ ${command}`, "terminal-command");
