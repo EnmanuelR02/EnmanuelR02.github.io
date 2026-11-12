@@ -214,6 +214,7 @@ body.cursor-active:has(a:hover) .cursor-ring, body.cursor-active:has(button:hove
 .terminal-bar > span:nth-child(3) { background: #8de7df; }
 .terminal-bar strong { margin-left: 12px; font-weight: 400; }
 .terminal-screen { min-height: 250px; padding: 25px 22px 10px; color: #b9c9e8; font: 13px/1.8 var(--mono); }
+.terminal-screen.game-mode .terminal-fixed { display: none; }
 .terminal-line { margin: 0 0 7px; }
 .terminal-command { color: #e3d8ff; }
 .terminal-command b, .terminal-success { color: var(--accent); }

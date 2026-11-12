@@ -31,6 +31,7 @@ const typing = document.querySelector("#typing");
 const cvDownload = document.querySelector("#cv-download");
 const terminalForm = document.querySelector("#terminal-form");
 const terminalInput = document.querySelector("#terminal-input");
+const terminalScreen = document.querySelector("#terminal-output");
 const terminalOutput = document.querySelector("#terminal-results");
 let gameTarget = null;
 let gameAttempts = 0;
@@ -117,11 +118,13 @@ terminalForm.addEventListener("submit", (event) => {
     terminalOutput.replaceChildren();
     gameTarget = null;
     gameAttempts = 0;
+    terminalScreen.classList.remove("game-mode");
     return;
   }
   if (gameTarget !== null && command === "exit") {
     gameTarget = null;
     gameAttempts = 0;
+    terminalScreen.classList.remove("game-mode");
     addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
     return;
   }
@@ -137,11 +140,20 @@ terminalForm.addEventListener("submit", (event) => {
       addTerminalLine(translations[language]["terminal.gameWin"].replace("{attempts}", gameAttempts), "terminal-success");
       gameTarget = null;
       gameAttempts = 0;
+      terminalScreen.classList.remove("game-mode");
     }
     return;
   }
   if (command === "help") {
     addTerminalLine(translations[language]["terminal.help"], "terminal-success");
+    return;
+  }
+  if (command === "game") {
+    terminalOutput.replaceChildren();
+    terminalScreen.classList.add("game-mode");
+    gameTarget = 6;
+    gameAttempts = 0;
+    addTerminalLine(translations[language]["terminal.gameStart"], "terminal-success");
     return;
   }
   addTerminalLine(`$ ${command}`, "terminal-command");
@@ -153,12 +165,6 @@ terminalForm.addEventListener("submit", (event) => {
   if (command === "contact") {
     addTerminalLine(translations[language]["terminal.contact"], "terminal-success");
     window.location.href = "mailto:01enmanuelromero@gmail.com";
-    return;
-  }
-  if (command === "game") {
-    gameTarget = 6;
-    gameAttempts = 0;
-    addTerminalLine(translations[language]["terminal.gameStart"], "terminal-success");
     return;
   }
   addTerminalLine(translations[language]["terminal.unknown"], "terminal-muted");
