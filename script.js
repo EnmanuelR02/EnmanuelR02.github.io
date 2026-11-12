@@ -31,7 +31,7 @@ const typing = document.querySelector("#typing");
 const cvDownload = document.querySelector("#cv-download");
 const terminalForm = document.querySelector("#terminal-form");
 const terminalInput = document.querySelector("#terminal-input");
-const terminalOutput = document.querySelector("#terminal-output");
+const terminalOutput = document.querySelector("#terminal-results");
 const terminalMessages = {
   en: [
     "I turn complex problems into clean, scalable software.",
@@ -102,7 +102,6 @@ terminalForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const command = terminalInput.value.trim().toLowerCase();
   if (!command) return;
-  addTerminalLine(`$ ${command}`, "terminal-command");
   terminalInput.value = "";
 
   if (command === "clear") {
@@ -113,6 +112,7 @@ terminalForm.addEventListener("submit", (event) => {
     addTerminalLine(translations[language]["terminal.help"], "terminal-success");
     return;
   }
+  addTerminalLine(`$ ${command}`, "terminal-command");
   if (command === "cv") {
     addTerminalLine(translations[language]["terminal.cv"], "terminal-success");
     cvDownload.click();
