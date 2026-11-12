@@ -32,6 +32,12 @@ const cvDownload = document.querySelector("#cv-download");
 const terminalForm = document.querySelector("#terminal-form");
 const terminalInput = document.querySelector("#terminal-input");
 const terminalOutput = document.querySelector("#terminal-results");
+
+const savedTheme = window.localStorage.getItem("portfolio-theme");
+if (savedTheme === "light") {
+  document.body.classList.add("light-mode");
+  document.querySelector("#theme-toggle").innerHTML = '<span class="moon-icon"></span>';
+}
 const terminalMessages = {
   en: [
     "I turn complex problems into clean, scalable software.",
@@ -87,6 +93,7 @@ document.querySelector("#language-toggle").addEventListener("click", () => {
 document.querySelector("#theme-toggle").addEventListener("click", (event) => {
   document.body.classList.toggle("light-mode");
   const light = document.body.classList.contains("light-mode");
+  window.localStorage.setItem("portfolio-theme", light ? "light" : "dark");
   event.currentTarget.innerHTML = light ? '<span class="moon-icon"></span>' : '<span class="sun-icon"></span>';
 });
 
