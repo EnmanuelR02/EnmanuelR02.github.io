@@ -107,3 +107,27 @@ em { color: var(--accent); font-style: normal; }
   .footer { flex-wrap: wrap; padding-inline: 19px; }
   .footer span:nth-child(2) { display: none; }
 }
+
+/* Alternating panels echo the reference's long-form portfolio rhythm. */
+.about-section { color: #fff; background: var(--night-soft); }
+.about-section .section-number { color: #a4afb4; }
+.about-copy > p { color: #b0bbc0; }
+.about-copy h2 { color: #fff; }
+.about-copy .under-link { color: #fff; border-color: #fff; }
+.about-copy .under-link:hover { color: var(--accent); border-color: var(--accent); }
+.experience-section { color: var(--ink); background: var(--paper); }
+.experience-section .section-number { color: var(--muted); }
+.experience-section .section-note { color: var(--muted); }
+.experience-card { border-color: var(--line); }
+.experience-main h2 { color: var(--ink); }
+.experience-main h3 { color: #0a99b1; }
+.experience-summary { color: var(--muted); }
+.experience-tags span { color: var(--muted); border-color: var(--line); }
+.experience-tags span:hover { color: #fff; }
+.skills-section { color: #fff; background: var(--night); }
+.skills-section .section-number { color: #a4afb4; }
+.skills-heading h2 { color: #fff; }
+.skills-heading > p { color: #a4afb4; }
+.skill-column { border-color: var(--light-line); }
+.skill-column p { color: #d3dadd; }
+.contact-section { background: #0b0e10; }
