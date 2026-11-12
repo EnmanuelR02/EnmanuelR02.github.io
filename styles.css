@@ -23,7 +23,11 @@ a { color: inherit; text-decoration: none; }
 .content-width { width: min(1120px, calc(100% - 64px)); margin: 0 auto; }
 .nav { position: absolute; z-index: 5; top: 0; left: 50%; display: flex; width: min(1120px, calc(100% - 64px)); align-items: center; justify-content: space-between; transform: translateX(-50%); padding: 28px 0; color: #fff; font-size: 11px; }
 .nav-actions { display: flex; align-items: center; gap: 8px; }
-.control-button { min-width: 32px; border: 1px solid rgba(255,255,255,.35); border-radius: 20px; padding: 8px 9px; color: #fff; background: transparent; cursor: pointer; font: 10px var(--mono); transition: .2s ease; }
+.control-button { min-width: 43px; height: 38px; border: 1px solid rgba(141,231,223,.2); border-radius: 22px; padding: 8px 13px; color: #9eb4b1; background: rgba(15,35,34,.72); cursor: pointer; font: 11px var(--mono); transition: .25s ease; }
+.theme-button { display: grid; min-width: 44px; place-items: center; padding: 0; border-radius: 50%; }
+.sun-icon { position: relative; display: block; width: 14px; height: 14px; border: 2px solid var(--warm); border-radius: 50%; box-shadow: 0 0 0 4px rgba(240,183,122,.1), 0 0 14px rgba(240,183,122,.55); }
+.sun-icon::before, .sun-icon::after { position: absolute; inset: -7px; background: repeating-conic-gradient(from 0deg, var(--warm) 0deg 8deg, transparent 8deg 45deg); content: ""; -webkit-mask: radial-gradient(circle, transparent 0 9px, #000 10px 12px, transparent 13px); mask: radial-gradient(circle, transparent 0 9px, #000 10px 12px, transparent 13px); }
+.moon-icon { display: block; width: 15px; height: 15px; border-radius: 50%; background: var(--accent); box-shadow: 4px -3px 0 0 var(--night) inset, 0 0 12px rgba(141,231,223,.5); }
 .control-button:hover, .control-button.active { color: var(--night); border-color: var(--accent); background: var(--accent); }
 .nav-brand { font-size: 17px; font-weight: 700; letter-spacing: -.08em; }
 .nav-brand span { color: var(--accent); }
@@ -57,10 +61,10 @@ a { color: inherit; text-decoration: none; }
 .social-links { display: flex; gap: 12px; margin-top: 34px; }
 .social-links a { display: grid; width: 40px; height: 40px; place-items: center; color: #fff; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; font: 10px var(--mono); transition: color .2s ease, border-color .2s ease, transform .2s ease, background .2s ease; }
 .social-links a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-4px); }
-.hero-button { display: inline-flex; gap: 18px; align-items: center; border: 1px solid #fff; padding: 13px 19px; color: #fff; font-size: 11px; transition: background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.hero-button { display: inline-flex; gap: 18px; align-items: center; min-height: 57px; border: 1px solid #fff; padding: 16px 27px; color: #fff; font-size: 13px; font-weight: 600; transition: background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .hero-button:hover { color: var(--night); background: var(--accent); border-color: var(--accent); }
 .hero-button:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,200,232,.2); }
-.hero-button-primary { color: #0a0d13; border-color: var(--accent); background: var(--accent); box-shadow: 0 10px 30px rgba(141,231,223,.16); }
+.hero-button-primary { color: #0a0d13; border-color: var(--accent); background: var(--accent); box-shadow: 0 12px 30px rgba(141,231,223,.2); }
 .hero-button-secondary { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.04); }
 .hero-button span { font-size: 16px; }
 .scroll-hint { position: absolute; z-index: 1; bottom: 30px; left: 50%; color: #7f898f; transform: translateX(-50%); }
@@ -126,6 +130,7 @@ body.light-mode .hero-button:hover { color: #fff; border-color: var(--accent); }
   .hero-inner { width: calc(100% - 38px); padding-top: 75px; }
   .hero h1 { margin-top: 42px; font-size: 59px; }
   .hero-actions { flex-wrap: wrap; }
+  .cursor-ring, .cursor-dot { display: none; }
   .about-section, .skills-section, .experience-section, .contact-section { padding: 90px 0; }
   .about-grid, .experience-main { grid-template-columns: 1fr; gap: 37px; }
   .about-photo { width: min(100%, 300px); height: 340px; }
@@ -163,3 +168,10 @@ body.light-mode .hero-button:hover { color: #fff; border-color: var(--accent); }
 .contact-section { background: #080a0f; }
 .contact-inner { position: relative; }
 .contact-inner::after { position: absolute; right: 6%; top: 15%; color: rgba(141,231,223,.16); content: "✦"; font-size: 170px; line-height: 1; transform: rotate(20deg); }
+.cursor-ring, .cursor-dot { position: fixed; z-index: 20; top: 0; left: 0; pointer-events: none; opacity: 0; border-radius: 50%; transform: translate(-50%, -50%); transition: opacity .25s ease; }
+.cursor-ring { width: 34px; height: 34px; border: 1px solid var(--accent); transition: width .2s ease, height .2s ease, opacity .25s ease; }
+.cursor-dot { width: 6px; height: 6px; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+body.cursor-active { cursor: none; }
+body.cursor-active .cursor-ring, body.cursor-active .cursor-dot { opacity: 1; }
+body.cursor-active a, body.cursor-active button { cursor: none; }
+body.cursor-active:has(a:hover) .cursor-ring, body.cursor-active:has(button:hover) .cursor-ring { width: 48px; height: 48px; border-color: var(--warm); }

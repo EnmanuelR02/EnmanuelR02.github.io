@@ -51,7 +51,7 @@ document.querySelector("#language-toggle").addEventListener("click", () => {
 document.querySelector("#theme-toggle").addEventListener("click", (event) => {
   document.body.classList.toggle("light-mode");
   const light = document.body.classList.contains("light-mode");
-  event.currentTarget.textContent = light ? "☾" : "☼";
+  event.currentTarget.innerHTML = light ? '<span class="moon-icon"></span>' : '<span class="sun-icon"></span>';
 });
 
 const canvas = document.querySelector("#particle-canvas");
@@ -102,6 +102,18 @@ window.addEventListener("resize", () => {
   createParticles();
 });
 animateParticles();
+
+const cursorRing = document.querySelector(".cursor-ring");
+const cursorDot = document.querySelector(".cursor-dot");
+if (window.matchMedia("(pointer: fine)").matches) {
+  document.body.classList.add("cursor-active");
+  window.addEventListener("pointermove", (event) => {
+    cursorRing.style.left = `${event.clientX}px`;
+    cursorRing.style.top = `${event.clientY}px`;
+    cursorDot.style.left = `${event.clientX}px`;
+    cursorDot.style.top = `${event.clientY}px`;
+  });
+}
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
