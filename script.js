@@ -1,7 +1,7 @@
 const translations = {
   en: {
     "nav.about": "About", "nav.experience": "Experience", "nav.skills": "Skills", "nav.contact": "Contact",
-    "hero.kicker": "Full-Stack Developer · Dominican Republic", "hero.button": "More about me ↓",
+    "hero.kicker": "Full-Stack Developer · Dominican Republic", "hero.button": "More about me ↓", "hero.cv": "Download CV",
     "about.label": "01 / ABOUT ME", "about.title": "Building useful", "about.titleAccent": "digital experiences.",
     "experience.label": "02 / EXPERIENCE", "skills.label": "03 / SKILLS", "skills.title": "Tools for turning",
     "skills.titleAccent": "ideas into reality.", "skills.description": "My toolkit combines frontend craft, backend architecture, databases and the habits that keep a project moving.",
@@ -10,7 +10,7 @@ const translations = {
   },
   es: {
     "nav.about": "Sobre mí", "nav.experience": "Experiencia", "nav.skills": "Habilidades", "nav.contact": "Contacto",
-    "hero.kicker": "Desarrollador Full-Stack · República Dominicana", "hero.button": "Conoce más sobre mí ↓",
+    "hero.kicker": "Desarrollador Full-Stack · República Dominicana", "hero.button": "Conoce más sobre mí ↓", "hero.cv": "Descargar CV",
     "about.label": "01 / SOBRE MÍ", "about.title": "Construyendo", "about.titleAccent": "experiencias digitales.",
     "experience.label": "02 / EXPERIENCIA", "skills.label": "03 / HABILIDADES", "skills.title": "Herramientas para convertir",
     "skills.titleAccent": "ideas en realidad.", "skills.description": "Mi conjunto de herramientas combina frontend, arquitectura backend, bases de datos y hábitos que mantienen cada proyecto avanzando.",
@@ -20,6 +20,7 @@ const translations = {
 };
 let language = "en";
 const typing = document.querySelector("#typing");
+const cvDownload = document.querySelector("#cv-download");
 const terminalMessages = {
   en: [
     "I turn complex problems into clean, scalable software.",
@@ -61,6 +62,8 @@ document.querySelector("#language-toggle").addEventListener("click", () => {
     element.textContent = translations[language][element.dataset.i18n];
   });
   document.querySelector("#language-toggle").textContent = language === "en" ? "ES" : "EN";
+  cvDownload.href = language === "en" ? "cv-en.pdf" : "cv-es.pdf";
+  cvDownload.download = language === "en" ? "Limberth-Romero-CV-English.pdf" : "Limberth-Romero-CV-Espanol.pdf";
   typing.textContent = "";
   phraseIndex = 0;
   characterIndex = 0;
