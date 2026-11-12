@@ -151,3 +151,27 @@ document.querySelectorAll(".animate-in, .section-number, .section-head, .about-c
   element.classList.add("scroll-reveal");
   revealObserver.observe(element);
 });
+
+const experienceSection = document.querySelector("#experience");
+const timelineProgress = document.querySelector(".timeline-progress");
+let progressFrame = 0;
+
+function updateTimelineProgress() {
+  progressFrame = 0;
+  if (!experienceSection || !timelineProgress) return;
+  const sectionBounds = experienceSection.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  const start = viewportHeight * .42;
+  const end = sectionBounds.height - viewportHeight * .22;
+  const traveled = Math.min(end, Math.max(0, start - sectionBounds.top));
+  const progress = end > 0 ? traveled / end : 0;
+  timelineProgress.style.height = `${Math.min(100, Math.max(0, progress * 100))}%`;
+}
+
+function requestTimelineProgress() {
+  if (!progressFrame) progressFrame = window.requestAnimationFrame(updateTimelineProgress);
+}
+
+window.addEventListener("scroll", requestTimelineProgress, { passive: true });
+window.addEventListener("resize", requestTimelineProgress);
+requestTimelineProgress();
