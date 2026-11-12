@@ -212,7 +212,13 @@ body.cursor-active:has(a:hover) .cursor-ring, body.cursor-active:has(button:hove
 .terminal-line { margin: 0 0 7px; }
 .terminal-command { color: #c7d7d4; }
 .terminal-command b, .terminal-success { color: var(--accent); }
+.terminal-prompt { color: #718b8a; }
+.terminal-url { color: #d3dddb; }
+.terminal-url em { color: var(--warm); font-style: normal; }
 .terminal-json { margin: 0 0 16px; color: #d3dddb; font: 13px/1.65 var(--mono); white-space: pre-wrap; }
+.terminal-key { color: var(--accent); }
+.terminal-string { color: var(--warm); }
+.terminal-bracket { color: #b7c8c5; }
 .terminal-muted { color: #526a6d; }
 .terminal-output-line { color: #d3dddb; }
 .terminal-form { display: flex; align-items: center; gap: 10px; padding: 17px 22px 20px; border-top: 1px solid rgba(141,231,223,.16); color: var(--accent); font: 15px var(--mono); }
