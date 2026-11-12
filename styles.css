@@ -184,3 +184,17 @@ body.cursor-active { cursor: none; }
 body.cursor-active .cursor-ring, body.cursor-active .cursor-dot { opacity: 1; }
 body.cursor-active a, body.cursor-active button { cursor: none; }
 body.cursor-active:has(a:hover) .cursor-ring, body.cursor-active:has(button:hover) .cursor-ring { width: 48px; height: 48px; border-color: var(--warm); }
+
+body { position: relative; isolation: isolate; background: #090d14; }
+body::before { position: fixed; z-index: -1; inset: 0; background: radial-gradient(circle at 18% 18%, rgba(62,115,143,.28), transparent 28%), radial-gradient(circle at 82% 28%, rgba(92,53,111,.3), transparent 32%), radial-gradient(circle at 55% 85%, rgba(28,92,91,.2), transparent 34%), linear-gradient(125deg, #090d14, #15202f 45%, #251a2f 75%, #090d14); background-size: 130% 130%; content: ""; animation: global-atmosphere 24s ease-in-out infinite alternate; }
+@keyframes global-atmosphere { from { transform: scale(1); filter: hue-rotate(0deg); } to { transform: scale(1.12); filter: hue-rotate(18deg); } }
+body.light-mode { background: #dce9e7; }
+body.light-mode::before { background: radial-gradient(circle at 18% 18%, rgba(79,170,174,.32), transparent 28%), radial-gradient(circle at 82% 28%, rgba(177,130,191,.25), transparent 32%), radial-gradient(circle at 55% 85%, rgba(106,174,157,.24), transparent 34%), linear-gradient(125deg, #e1eceb, #d6e8ed 45%, #eadff0 75%, #e1eceb); }
+.hero { background: transparent; }
+#particle-canvas { position: fixed; z-index: 0; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero, .light-section, .experience-section, .skills-section, .contact-section, .footer { position: relative; z-index: 1; }
+.light-section { background: rgba(12,18,28,.76); }
+.experience-section { background: rgba(240,239,233,.8); }
+.skills-section, .contact-section { background: rgba(7,11,18,.72); }
+body.light-mode .light-section, body.light-mode .skills-section, body.light-mode .contact-section { background: rgba(239,245,244,.72); }
+body.light-mode .experience-section { background: rgba(247,248,244,.78); }
