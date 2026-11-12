@@ -42,7 +42,7 @@ a { color: inherit; text-decoration: none; }
 .hero::after { position: absolute; width: min(52vw, 720px); height: min(52vw, 720px); border: 1px solid rgba(141,231,223,.15); border-radius: 50%; content: ""; transform: translate(20%, 14%); box-shadow: 0 0 0 85px rgba(141,231,223,.025), 0 0 0 170px rgba(141,231,223,.018); }
 .hero::before { position: absolute; top: 18%; left: 12%; width: 180px; height: 180px; border-radius: 50%; background: var(--accent); content: ""; opacity: .1; filter: blur(55px); animation: orb-float 12s ease-in-out infinite alternate; }
 @keyframes orb-float { to { transform: translate(50vw, 35vh) scale(1.7); } }
-.tech-ribbon { position: absolute; z-index: 2; top: 126px; left: 0; display: flex; width: max-content; min-width: 100%; justify-content: space-around; align-items: center; gap: 34px; padding: 18px 0; color: rgba(215,230,228,.6); border-top: 1px solid rgba(141,231,223,.12); border-bottom: 1px solid rgba(141,231,223,.12); font: 11px var(--mono); letter-spacing: .15em; animation: ribbon-drift 28s linear infinite; }
+.tech-ribbon { position: absolute; z-index: 2; top: 126px; left: 0; display: flex; width: max-content; min-width: 100%; justify-content: space-around; align-items: center; gap: 34px; padding: 18px 0; color: rgba(215,230,228,.6); border-top: 1px solid rgba(141,231,223,.12); border-bottom: 1px solid rgba(141,231,223,.12); font: 11px var(--mono); letter-spacing: .15em; animation: ribbon-drift 22s linear infinite; }
 .tech-ribbon span:nth-of-type(2n) { color: var(--accent); }
 .tech-ribbon i { color: var(--warm); font-style: normal; }
 @keyframes ribbon-drift { from { transform: translateX(0); } to { transform: translateX(-18%); } }
