@@ -156,8 +156,8 @@ terminalForm.addEventListener("submit", (event) => {
     }
     if (["e", "s", "exit", "salir"].includes(command)) {
       gameDecisionPending = false;
+      terminalOutput.replaceChildren();
       terminalScreen.classList.remove("game-mode");
-      addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
       return;
     }
     addTerminalLine(translations[language]["terminal.gameChoiceInvalid"], "terminal-muted");
@@ -167,8 +167,8 @@ terminalForm.addEventListener("submit", (event) => {
     currentRiddle = null;
     gameAttempts = 0;
     gameDecisionPending = false;
+    terminalOutput.replaceChildren();
     terminalScreen.classList.remove("game-mode");
-    addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
     return;
   }
   if (currentRiddle !== null) {
