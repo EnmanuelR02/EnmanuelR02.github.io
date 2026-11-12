@@ -9,7 +9,7 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend & Data", "skills.tools": "Tools & Languages", "skills.spanish": "Spanish · Native", "skills.english": "English · Advanced",
     "contact.label": "04 / GET IN TOUCH", "contact.title": "Have an idea?", "contact.titleAccent": "Let’s build it.",
     "contact.description": "If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.",
-    "terminal.section": "LABORATORY", "terminal.heading": "A small interactive profile.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Full-Stack Developer\"", "terminal.location": "\"Dominican Republic / United States\"", "terminal.focus": "\"e-commerce & useful digital products\"", "terminal.status": "\"shipping reliable software with intention\"", "terminal.interactive": "→ Type help to explore Limberth's profile", "terminal.help": "Commands available: cv · contact · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.unknown": "Command not found. Type help to see available commands.",
+    "terminal.section": "LABORATORY", "terminal.heading": "A small interactive profile.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Full-Stack Developer\"", "terminal.location": "\"Dominican Republic / United States\"", "terminal.focus": "\"e-commerce & useful digital products\"", "terminal.status": "\"shipping reliable software with intention\"", "terminal.interactive": "→ Type help to explore Limberth's profile", "terminal.help": "Commands available: cv · contact · game · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.gameStart": "Game started. Guess a number from 1 to 10, or type exit.", "terminal.gameWin": "Correct! You found it in {attempts} attempts.", "terminal.gameLow": "Too low. Try again.", "terminal.gameHigh": "Too high. Try again.", "terminal.gameInvalid": "Enter a whole number from 1 to 10, or type exit.", "terminal.gameExit": "Game ended. Type game whenever you want to play again.", "terminal.unknown": "Command not found. Type help to see available commands.",
     "footer.tagline": "Designed & built with intention.", "footer.top": "Back to top",
   },
   es: {
@@ -22,7 +22,7 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend y datos", "skills.tools": "Herramientas e idiomas", "skills.spanish": "Español · Nativo", "skills.english": "Inglés · Avanzado",
     "contact.label": "04 / CONTACTO", "contact.title": "¿Tienes una idea?", "contact.titleAccent": "Construyámosla.",
     "contact.description": "Si conoces una oportunidad, tienes una pregunta o simplemente quieres saludar, escríbeme.",
-    "terminal.section": "LABORATORIO", "terminal.heading": "Un pequeño perfil interactivo.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Desarrollador Full-Stack\"", "terminal.location": "\"República Dominicana / Estados Unidos\"", "terminal.focus": "\"e-commerce y productos digitales útiles\"", "terminal.status": "\"entregando software confiable con intención\"", "terminal.interactive": "→ Escribe help para explorar el perfil de Limberth", "terminal.help": "Comandos disponibles: cv · contact · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
+    "terminal.section": "LABORATORIO", "terminal.heading": "Un pequeño perfil interactivo.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Desarrollador Full-Stack\"", "terminal.location": "\"República Dominicana / Estados Unidos\"", "terminal.focus": "\"e-commerce y productos digitales útiles\"", "terminal.status": "\"entregando software confiable con intención\"", "terminal.interactive": "→ Escribe help para explorar el perfil de Limberth", "terminal.help": "Comandos disponibles: cv · contact · game · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.gameStart": "Juego iniciado. Adivina un número del 1 al 10 o escribe exit.", "terminal.gameWin": "¡Correcto! Lo encontraste en {attempts} intentos.", "terminal.gameLow": "Muy bajo. Inténtalo otra vez.", "terminal.gameHigh": "Muy alto. Inténtalo otra vez.", "terminal.gameInvalid": "Escribe un número entero del 1 al 10 o escribe exit.", "terminal.gameExit": "Juego terminado. Escribe game cuando quieras volver a jugar.", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
     "footer.tagline": "Diseñado y construido con intención.", "footer.top": "Volver arriba",
   },
 };
@@ -32,6 +32,8 @@ const cvDownload = document.querySelector("#cv-download");
 const terminalForm = document.querySelector("#terminal-form");
 const terminalInput = document.querySelector("#terminal-input");
 const terminalOutput = document.querySelector("#terminal-results");
+let gameTarget = null;
+let gameAttempts = 0;
 
 const savedTheme = window.localStorage.getItem("portfolio-theme");
 if (savedTheme === "light") {
@@ -113,6 +115,33 @@ terminalForm.addEventListener("submit", (event) => {
 
   if (command === "clear") {
     terminalOutput.replaceChildren();
+    gameTarget = null;
+    gameAttempts = 0;
+    return;
+  }
+  if (gameTarget !== null && command === "exit") {
+    gameTarget = null;
+    gameAttempts = 0;
+    addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
+    return;
+  }
+  if (gameTarget !== null) {
+    const guess = Number(command);
+    if (!Number.isInteger(guess) || guess < 1 || guess > 10) {
+      addTerminalLine(translations[language]["terminal.gameInvalid"], "terminal-muted");
+      return;
+    }
+    gameAttempts += 1;
+    if (guess === gameTarget) {
+      addTerminalLine(translations[language]["terminal.gameWin"].replace("{attempts}", gameAttempts), "terminal-success");
+      gameTarget = null;
+      gameAttempts = 0;
+    } else {
+      addTerminalLine(
+        translations[language][guess < gameTarget ? "terminal.gameLow" : "terminal.gameHigh"],
+        "terminal-output-line",
+      );
+    }
     return;
   }
   if (command === "help") {
@@ -128,6 +157,12 @@ terminalForm.addEventListener("submit", (event) => {
   if (command === "contact") {
     addTerminalLine(translations[language]["terminal.contact"], "terminal-success");
     window.location.href = "mailto:01enmanuelromero@gmail.com";
+    return;
+  }
+  if (command === "game") {
+    gameTarget = Math.floor(Math.random() * 10) + 1;
+    gameAttempts = 0;
+    addTerminalLine(translations[language]["terminal.gameStart"], "terminal-success");
     return;
   }
   addTerminalLine(translations[language]["terminal.unknown"], "terminal-muted");
