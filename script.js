@@ -7,7 +7,6 @@ const translations = {
     "skills.titleAccent": "ideas into reality.", "skills.description": "My toolkit combines frontend craft, backend architecture, databases and the habits that keep a project moving.",
     "contact.label": "04 / GET IN TOUCH", "contact.title": "Have an idea?", "contact.titleAccent": "Let’s build it.",
     "contact.description": "If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.",
-    message: "Passionate about building useful products with technology.",
   },
   es: {
     "nav.about": "Sobre mí", "nav.experience": "Experiencia", "nav.skills": "Habilidades", "nav.contact": "Contacto",
@@ -17,23 +16,43 @@ const translations = {
     "skills.titleAccent": "ideas en realidad.", "skills.description": "Mi conjunto de herramientas combina frontend, arquitectura backend, bases de datos y hábitos que mantienen cada proyecto avanzando.",
     "contact.label": "04 / CONTACTO", "contact.title": "¿Tienes una idea?", "contact.titleAccent": "Construyámosla.",
     "contact.description": "Si conoces una oportunidad, tienes una pregunta o simplemente quieres saludar, escríbeme.",
-    message: "Apasionado por crear productos útiles usando tecnología.",
   },
 };
 let language = "en";
-let message = translations[language].message;
 const typing = document.querySelector("#typing");
-let index = 0;
+const terminalMessages = {
+  en: [
+    "I turn complex problems into clean, scalable software.",
+    "I build interfaces people enjoy using.",
+    "I take products from idea to production.",
+  ],
+  es: [
+    "Convierto problemas complejos en software claro y escalable.",
+    "Construyo interfaces que las personas disfrutan usar.",
+    "Llevo productos desde una idea hasta producción.",
+  ],
+};
+let phraseIndex = 0;
+let characterIndex = 0;
+let deleting = false;
 
 function typeMessage() {
-  if (index < message.length) {
-    typing.textContent += message[index];
-    index += 1;
-    window.setTimeout(typeMessage, 42);
+  const phrase = terminalMessages[language][phraseIndex % terminalMessages[language].length];
+  typing.textContent = deleting ? phrase.slice(0, characterIndex - 1) : phrase.slice(0, characterIndex + 1);
+  characterIndex += deleting ? -1 : 1;
+  let delay = deleting ? 30 : 54;
+  if (!deleting && characterIndex === phrase.length) {
+    deleting = true;
+    delay = 2200;
+  } else if (deleting && characterIndex === 0) {
+    deleting = false;
+    phraseIndex += 1;
+    delay = 420;
   }
+  window.setTimeout(typeMessage, delay);
 }
 
-window.setTimeout(typeMessage, 500);
+window.setTimeout(typeMessage, 850);
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 document.querySelector("#language-toggle").addEventListener("click", () => {
@@ -42,10 +61,10 @@ document.querySelector("#language-toggle").addEventListener("click", () => {
     element.textContent = translations[language][element.dataset.i18n];
   });
   document.querySelector("#language-toggle").textContent = language === "en" ? "ES" : "EN";
-  message = translations[language].message;
   typing.textContent = "";
-  index = 0;
-  typeMessage();
+  phraseIndex = 0;
+  characterIndex = 0;
+  deleting = false;
 });
 
 document.querySelector("#theme-toggle").addEventListener("click", (event) => {
@@ -120,11 +139,15 @@ const revealObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove("is-visible");
       }
     });
   },
-  { threshold: 0.18 },
+  { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 );
 
-document.querySelectorAll(".animate-in").forEach((element) => revealObserver.observe(element));
+document.querySelectorAll(".animate-in, .section-number, .section-head, .about-copy, .skills-heading, .skill-column, .experience-card, .contact-inner").forEach((element) => {
+  element.classList.add("scroll-reveal");
+  revealObserver.observe(element);
+});
