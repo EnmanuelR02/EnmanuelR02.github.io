@@ -9,6 +9,7 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend & Data", "skills.tools": "Tools & Languages", "skills.spanish": "Spanish · Native", "skills.english": "English · Advanced",
     "contact.label": "04 / GET IN TOUCH", "contact.title": "Have an idea?", "contact.titleAccent": "Let’s build it.",
     "contact.description": "If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.",
+    "terminal.title": "limberth@portfolio — interactive", "terminal.help": "Commands: help · cv · contact · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.unknown": "Command not found. Type help to see available commands.",
     "footer.tagline": "Designed & built with intention.", "footer.top": "Back to top",
   },
   es: {
@@ -21,12 +22,16 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend y datos", "skills.tools": "Herramientas e idiomas", "skills.spanish": "Español · Nativo", "skills.english": "Inglés · Avanzado",
     "contact.label": "04 / CONTACTO", "contact.title": "¿Tienes una idea?", "contact.titleAccent": "Construyámosla.",
     "contact.description": "Si conoces una oportunidad, tienes una pregunta o simplemente quieres saludar, escríbeme.",
+    "terminal.title": "limberth@portfolio — interactiva", "terminal.help": "Comandos: help · cv · contact · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
     "footer.tagline": "Diseñado y construido con intención.", "footer.top": "Volver arriba",
   },
 };
 let language = "en";
 const typing = document.querySelector("#typing");
 const cvDownload = document.querySelector("#cv-download");
+const terminalForm = document.querySelector("#terminal-form");
+const terminalInput = document.querySelector("#terminal-input");
+const terminalOutput = document.querySelector("#terminal-output");
 const terminalMessages = {
   en: [
     "I turn complex problems into clean, scalable software.",
@@ -67,6 +72,9 @@ document.querySelector("#language-toggle").addEventListener("click", () => {
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     element.textContent = translations[language][element.dataset.i18n];
   });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    element.placeholder = translations[language][element.dataset.i18nPlaceholder];
+  });
   document.querySelector("#language-toggle").textContent = language === "en" ? "ES" : "EN";
   cvDownload.href = language === "en" ? "cv-en.pdf" : "cv-es.pdf";
   cvDownload.download = language === "en" ? "Limberth-Romero-CV-English.pdf" : "Limberth-Romero-CV-Espanol.pdf";
@@ -80,6 +88,42 @@ document.querySelector("#theme-toggle").addEventListener("click", (event) => {
   document.body.classList.toggle("light-mode");
   const light = document.body.classList.contains("light-mode");
   event.currentTarget.innerHTML = light ? '<span class="moon-icon"></span>' : '<span class="sun-icon"></span>';
+});
+
+function addTerminalLine(text, className = "terminal-output-line") {
+  const line = document.createElement("p");
+  line.className = `terminal-line ${className}`;
+  line.textContent = text;
+  terminalOutput.append(line);
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+terminalForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const command = terminalInput.value.trim().toLowerCase();
+  if (!command) return;
+  addTerminalLine(`$ ${command}`, "terminal-command");
+  terminalInput.value = "";
+
+  if (command === "clear") {
+    terminalOutput.replaceChildren();
+    return;
+  }
+  if (command === "help") {
+    addTerminalLine(translations[language]["terminal.help"], "terminal-success");
+    return;
+  }
+  if (command === "cv") {
+    addTerminalLine(translations[language]["terminal.cv"], "terminal-success");
+    cvDownload.click();
+    return;
+  }
+  if (command === "contact") {
+    addTerminalLine(translations[language]["terminal.contact"], "terminal-success");
+    window.location.href = "mailto:01enmanuelromero@gmail.com";
+    return;
+  }
+  addTerminalLine(translations[language]["terminal.unknown"], "terminal-muted");
 });
 
 const canvas = document.querySelector("#particle-canvas");

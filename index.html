@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=section-labels-3" />
+    <link rel="stylesheet" href="styles.css?v=terminal-contact-1" />
   </head>
   <body>
     <nav class="nav">
@@ -105,10 +105,24 @@
 
       <section class="contact-section" id="contact">
         <div class="content-width contact-inner">
-          <p class="section-number" data-i18n="contact.label">04 / GET IN TOUCH</p>
-          <h2><span data-i18n="contact.title">Have an idea?</span><br /><em data-i18n="contact.titleAccent">Let’s build it.</em></h2>
-          <p data-i18n="contact.description">If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.</p>
-          <a class="contact-email" href="mailto:01enmanuelromero@gmail.com">01enmanuelromero@gmail.com ↗</a>
+          <div class="contact-copy">
+            <p class="section-number" data-i18n="contact.label">04 / GET IN TOUCH</p>
+            <h2><span data-i18n="contact.title">Have an idea?</span><br /><em data-i18n="contact.titleAccent">Let’s build it.</em></h2>
+            <p data-i18n="contact.description">If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.</p>
+            <a class="contact-email" href="mailto:01enmanuelromero@gmail.com">01enmanuelromero@gmail.com ↗</a>
+          </div>
+          <div class="contact-terminal">
+            <div class="terminal-bar"><span></span><span></span><span></span><strong data-i18n="terminal.title">limberth@portfolio — interactive</strong></div>
+            <div class="terminal-screen" id="terminal-output">
+              <p class="terminal-line terminal-command">$ <b>help</b></p>
+              <p class="terminal-line terminal-success" data-i18n="terminal.help">Commands: help · cv · contact · clear</p>
+              <p class="terminal-line terminal-muted" data-i18n="terminal.prompt">Type a command to explore.</p>
+            </div>
+            <form class="terminal-form" id="terminal-form">
+              <label for="terminal-input">$</label>
+              <input id="terminal-input" type="text" autocomplete="off" spellcheck="false" data-i18n-placeholder="terminal.placeholder" placeholder="Type help and press Enter..." />
+            </form>
+          </div>
         </div>
       </section>
     </main>
@@ -116,6 +130,6 @@
     <footer class="footer"><span>© <span id="year"></span> Limberth Romero</span><span data-i18n="footer.tagline">Designed & built with intention.</span><a href="#home"><span data-i18n="footer.top">Back to top</span> ↑</a></footer>
     <div class="cursor-ring" aria-hidden="true"></div>
     <div class="cursor-dot" aria-hidden="true"></div>
-    <script src="script.js?v=i18n-complete-1"></script>
+    <script src="script.js?v=terminal-contact-1"></script>
   </body>
 </html>
