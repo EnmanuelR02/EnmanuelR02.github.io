@@ -260,3 +260,20 @@ body.light-mode .experience-section .experience-main h2 { color: var(--ink); }
 body.light-mode .experience-section .experience-main h3 { color: #0a99b1; }
 body.light-mode .experience-section .experience-summary, body.light-mode .experience-section .experience-tags span { color: var(--muted); }
 body.light-mode .experience-card::before { background: #f7f8f4; }
+
+body.light-mode .hero { color: var(--ink); }
+body.light-mode .hero-kicker { color: var(--muted); border-color: rgba(23,32,39,.2); background: rgba(255,255,255,.48); }
+body.light-mode .hero h1 .name-word { color: var(--ink); }
+body.light-mode .hero h1 .name-accent { color: #0d8f88; }
+body.light-mode .hero-message { color: #536871; }
+body.light-mode .about-section, body.light-mode .skills-section, body.light-mode .experience-section, body.light-mode .contact-section { color: var(--ink); }
+body.light-mode .about-copy h2, body.light-mode .skills-heading h2, body.light-mode .contact-inner h2 { color: var(--ink); }
+body.light-mode .about-copy > p, body.light-mode .skills-heading > p, body.light-mode .contact-inner > p:not(.section-number) { color: #536871; }
+body.light-mode .skills-section .section-number, body.light-mode .experience-section .section-number, body.light-mode .about-section .section-number, body.light-mode .contact-section .section-number { color: #0d8f88; }
+body.light-mode .skills-heading h2 em, body.light-mode .contact-inner h2 em { color: #0d8f88; }
+body.light-mode .skill-column { border-color: rgba(23,32,39,.16); background: rgba(255,255,255,.68); }
+body.light-mode .skill-column h3 { color: #0d8f88; }
+body.light-mode .skill-column p { color: var(--ink); }
+body.light-mode .contact-email { color: #0d8f88; border-color: #0d8f88; }
+body.light-mode .footer { color: #536871; background: rgba(239,245,244,.9); border-color: rgba(23,32,39,.14); }
+body.light-mode .footer a { color: #0d8f88; }
