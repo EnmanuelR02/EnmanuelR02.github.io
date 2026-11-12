@@ -152,8 +152,13 @@ body.light-mode .hero-button:hover { color: #fff; border-color: var(--accent); }
   .skills-heading > p { margin-top: 25px; }
   .skills-grid { grid-template-columns: 1fr; gap: 38px; margin-top: 45px; }
   .experience-summary { margin-top: 0; }
-  .contact-inner { grid-template-columns: 1fr; gap: 55px; }
-  .contact-terminal { min-height: 330px; }
+  .contact-inner { display: block; min-width: 0; }
+  .contact-copy { width: 100%; margin-bottom: 72px; }
+  .contact-inner h2 { font-size: clamp(36px, 11vw, 58px); overflow-wrap: anywhere; }
+  .contact-inner > p:not(.section-number) { max-width: 100%; }
+  .contact-terminal { width: 100%; min-width: 0; min-height: 330px; }
+  .terminal-bar strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .terminal-screen { min-width: 0; overflow-x: auto; }
   .footer { flex-wrap: wrap; padding-inline: 19px; }
   .footer span:nth-child(2) { display: none; }
 }
