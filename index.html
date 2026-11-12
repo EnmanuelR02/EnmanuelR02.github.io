@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=name-hover-1" />
+    <link rel="stylesheet" href="styles.css?v=terminal-profile-1" />
   </head>
   <body>
     <nav class="nav">
@@ -114,7 +114,15 @@
           <div class="contact-terminal">
             <div class="terminal-bar"><span></span><span></span><span></span><strong data-i18n="terminal.title">limberth@portfolio — interactive</strong></div>
             <div class="terminal-screen" id="terminal-output">
-              <p class="terminal-line terminal-command terminal-fixed">$ <b>help</b></p>
+              <p class="terminal-line terminal-command terminal-fixed">$ curl https://api.limberth.dev/developer</p>
+              <pre class="terminal-json terminal-fixed" data-i18n="terminal.profile">{
+  "name": "Limberth Romero",
+  "role": "Full-Stack Developer",
+  "location": "La Vega, Dominican Republic",
+  "stack": ["React", "Next.js", "Node.js", "PostgreSQL"],
+  "status": "open to interesting problems"
+}</pre>
+              <p class="terminal-line terminal-success terminal-fixed" data-i18n="terminal.interactive">→ Interactive terminal. Type help</p>
               <div id="terminal-results"></div>
             </div>
             <form class="terminal-form" id="terminal-form">
