@@ -179,7 +179,7 @@ body.light-mode .hero-button:hover { color: #fff; border-color: var(--accent); }
 .skill-column p { color: #d3dadd; }
 .contact-section { background: #080a0f; }
 .contact-inner { position: relative; }
-.contact-inner::after { position: absolute; right: 6%; top: 15%; color: rgba(141,231,223,.16); content: "✦"; font-size: 170px; line-height: 1; transform: rotate(20deg); }
+.contact-inner::after { content: none; }
 .light-section .about-copy > p, .light-section .skills-heading > p { color: var(--muted); }
 body.light-mode .about-section, body.light-mode .skills-section, body.light-mode .contact-section { color: var(--ink); }
 body.light-mode .about-copy h2, body.light-mode .skills-heading h2 { color: var(--ink); }
@@ -199,7 +199,7 @@ body.cursor-active:has(a:hover) .cursor-ring, body.cursor-active:has(button:hove
 .contact-inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); gap: 8%; align-items: center; }
 .contact-inner::after { display: none; }
 .contact-copy { min-width: 0; }
-.contact-terminal { overflow: hidden; min-height: 360px; border: 1px solid rgba(141,231,223,.52); border-radius: 20px; background: rgba(3,12,15,.78); box-shadow: 0 0 0 1px rgba(141,231,223,.06), 0 24px 70px rgba(0,0,0,.24); }
+.contact-terminal { position: relative; z-index: 2; display: block; overflow: hidden; min-height: 360px; border: 1px solid rgba(141,231,223,.52); border-radius: 20px; background: rgba(3,12,15,.78); box-shadow: 0 0 0 1px rgba(141,231,223,.06), 0 24px 70px rgba(0,0,0,.24); }
 .terminal-bar { display: flex; align-items: center; gap: 8px; padding: 18px 20px; border-bottom: 1px solid rgba(141,231,223,.16); color: #63827f; font: 11px var(--mono); }
 .terminal-bar > span { width: 10px; height: 10px; border-radius: 50%; background: #ef6c61; }
 .terminal-bar > span:nth-child(2) { background: #f0b77a; }
