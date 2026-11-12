@@ -14,19 +14,23 @@
     <nav class="nav">
       <a class="nav-brand" href="#home">LER<span>.</span></a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
-      <a class="nav-github" href="https://github.com/EnmanuelR02" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <div class="nav-actions">
+        <button class="control-button" id="language-toggle" type="button" aria-label="Cambiar idioma">ES</button>
+        <button class="control-button theme-button" id="theme-toggle" type="button" aria-label="Cambiar tema">☼</button>
+        <a class="nav-github" href="https://github.com/EnmanuelR02" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
     </nav>
 
     <main>
       <section class="hero" id="home">
         <div class="stars" aria-hidden="true"></div>
         <div class="hero-inner animate-in">
-          <p class="hero-kicker">Full-Stack Developer · Dominican Republic</p>
+          <p class="hero-kicker" data-i18n="hero.kicker">Full-Stack Developer · Dominican Republic</p>
           <h1>Limberth Enmanuel<br /><span>Romero Santos</span></h1>
           <p class="hero-message"><span id="typing"></span><span class="cursor">|</span></p>
           <div class="social-links">
@@ -34,21 +38,21 @@
             <a href="mailto:01enmanuelromero@gmail.com" aria-label="Email">✉</a>
             <a href="tel:+18099525997" aria-label="Phone">+1</a>
           </div>
-          <a class="hero-button" href="#about">More about me <span>↓</span></a>
+          <a class="hero-button" href="#about" data-i18n="hero.button">More about me <span>↓</span></a>
         </div>
         <div class="scroll-hint">Scroll to explore <span>↓</span></div>
       </section>
 
       <section class="light-section about-section" id="about">
         <div class="content-width">
-          <p class="section-number">01 / ABOUT ME</p>
+          <p class="section-number" data-i18n="about.label">01 / ABOUT ME</p>
           <div class="about-grid">
             <div class="about-photo animate-in">
               <img src="https://avatars.githubusercontent.com/u/120626966?v=4" alt="Limberth Enmanuel Romero Santos" />
               <span>Based in<br /><b>Villa Tapia, RD</b></span>
             </div>
             <div class="about-copy animate-in delay-1">
-              <h2>Building useful<br /><em>digital experiences.</em></h2>
+              <h2><span data-i18n="about.title">Building useful</span><br /><em data-i18n="about.titleAccent">digital experiences.</em></h2>
               <p>My name is Limberth Enmanuel Romero Santos. I am a Full-Stack Developer committed to continuous learning and focused on crafting scalable, logical solutions in an ever-evolving technology landscape.</p>
               <p>At Pixel Media, I develop and optimize e-commerce experiences with React and Next.js, connect APIs and payment systems, and build backend features that make products faster and easier to use.</p>
               <a class="under-link" href="mailto:01enmanuelromero@gmail.com">Let’s work together ↗</a>
@@ -60,7 +64,7 @@
       <section class="experience-section" id="experience">
         <div class="content-width">
           <div class="section-head">
-            <p class="section-number">02 / EXPERIENCE</p>
+            <p class="section-number" data-i18n="experience.label">02 / EXPERIENCE</p>
             <p class="section-note">A selection of the work<br />behind my experience.</p>
           </div>
           <div class="experience-card animate-in">
@@ -84,8 +88,8 @@
 
       <section class="light-section skills-section" id="skills">
         <div class="content-width">
-          <p class="section-number">03 / SKILLS</p>
-          <div class="skills-heading"><h2>Tools for turning<br /><em>ideas into reality.</em></h2><p>My toolkit combines frontend craft, backend architecture, databases and the habits that keep a project moving.</p></div>
+          <p class="section-number" data-i18n="skills.label">03 / SKILLS</p>
+          <div class="skills-heading"><h2><span data-i18n="skills.title">Tools for turning</span><br /><em data-i18n="skills.titleAccent">ideas into reality.</em></h2><p data-i18n="skills.description">My toolkit combines frontend craft, backend architecture, databases and the habits that keep a project moving.</p></div>
           <div class="skills-grid">
             <div class="skill-column animate-in"><h3>Frontend</h3><p>React</p><p>Next.js</p><p>JavaScript</p><p>HTML5 / CSS3</p><p>Material UI</p><p>Ant Design</p><p>Tailwind CSS</p></div>
             <div class="skill-column animate-in delay-1"><h3>Backend & Data</h3><p>Node.js / Express</p><p>REST APIs</p><p>GraphQL</p><p>JWT</p><p>MongoDB</p><p>PostgreSQL</p><p>Oracle</p></div>
@@ -96,9 +100,9 @@
 
       <section class="contact-section" id="contact">
         <div class="content-width contact-inner">
-          <p class="section-number">04 / GET IN TOUCH</p>
-          <h2>Have an idea?<br /><em>Let’s build it.</em></h2>
-          <p>If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.</p>
+          <p class="section-number" data-i18n="contact.label">04 / GET IN TOUCH</p>
+          <h2><span data-i18n="contact.title">Have an idea?</span><br /><em data-i18n="contact.titleAccent">Let’s build it.</em></h2>
+          <p data-i18n="contact.description">If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.</p>
           <a class="contact-email" href="mailto:01enmanuelromero@gmail.com">01enmanuelromero@gmail.com ↗</a>
         </div>
       </section>

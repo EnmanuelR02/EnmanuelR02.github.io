@@ -8,6 +8,9 @@
   --warm: #ffcf5a;
   --line: rgba(26, 30, 33, .16);
   --light-line: rgba(242, 241, 236, .17);
+  --hero-a: #111416;
+  --hero-b: #102b38;
+  --hero-c: #321b3d;
   --display: "Space Grotesk", sans-serif;
   --mono: "DM Mono", monospace;
 }
@@ -15,18 +18,25 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--display); }
+body.light-mode { --paper: #f7fbff; --ink: #172027; --muted: #64727c; --night: #e8f4f7; --night-soft: #dcecf2; --hero-a: #e8f4f7; --hero-b: #bcecf6; --hero-c: #eed9ff; }
 a { color: inherit; text-decoration: none; }
 .content-width { width: min(1120px, calc(100% - 64px)); margin: 0 auto; }
 .nav { position: absolute; z-index: 5; top: 0; left: 50%; display: flex; width: min(1120px, calc(100% - 64px)); align-items: center; justify-content: space-between; transform: translateX(-50%); padding: 28px 0; color: #fff; font-size: 11px; }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.control-button { min-width: 32px; border: 1px solid rgba(255,255,255,.35); border-radius: 20px; padding: 8px 9px; color: #fff; background: transparent; cursor: pointer; font: 10px var(--mono); transition: .2s ease; }
+.control-button:hover, .control-button.active { color: var(--night); border-color: var(--accent); background: var(--accent); }
 .nav-brand { font-size: 17px; font-weight: 700; letter-spacing: -.08em; }
 .nav-brand span { color: var(--accent); }
 .nav-links { display: flex; gap: 29px; color: #aab3b8; }
 .nav-links a, .nav-github { transition: color .2s ease; }
 .nav-links a:hover, .nav-github:hover { color: var(--accent); }
 .nav-github { border: 1px solid rgba(255,255,255,.35); border-radius: 25px; padding: 10px 15px; }
-.hero { position: relative; display: grid; min-height: 100vh; place-items: center; overflow: hidden; color: #fff; background: var(--night); }
+.hero { position: relative; display: grid; min-height: 100vh; place-items: center; overflow: hidden; color: #fff; background: linear-gradient(125deg, var(--hero-a), var(--hero-b), var(--hero-c), var(--hero-a)); background-size: 400% 400%; animation: living-gradient 16s ease infinite; }
+@keyframes living-gradient { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 .stars { position: absolute; inset: 0; opacity: .44; background-image: radial-gradient(#fff 1px, transparent 1px), radial-gradient(#00c8e8 1px, transparent 1px); background-size: 91px 91px, 153px 153px; background-position: 8px 18px, 42px 71px; }
 .hero::after { position: absolute; width: 600px; height: 600px; border: 1px solid rgba(0,200,232,.16); border-radius: 50%; content: ""; transform: translate(20%, 14%); box-shadow: 0 0 0 70px rgba(0,200,232,.025), 0 0 0 140px rgba(0,200,232,.02); }
+.hero::before { position: absolute; top: 18%; left: 12%; width: 150px; height: 150px; border-radius: 50%; background: var(--accent); content: ""; opacity: .16; filter: blur(35px); animation: orb-float 7s ease-in-out infinite alternate; }
+@keyframes orb-float { to { transform: translate(50vw, 35vh) scale(1.7); } }
 .hero-inner { position: relative; z-index: 1; width: min(920px, calc(100% - 44px)); text-align: center; }
 .hero-inner.animate-in { animation: hero-rise 1s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes hero-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
@@ -92,9 +102,17 @@ em { color: var(--accent); font-style: normal; }
 .contact-email:hover { color: var(--warm); letter-spacing: .03em; }
 .footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px max(32px, calc((100% - 1120px) / 2)); color: #7f898f; background: #0b0e10; border-top: 1px solid rgba(255,255,255,.1); font: 10px var(--mono); }
 .footer a { color: var(--accent); }
+body.light-mode .nav, body.light-mode .nav a { color: var(--ink); }
+body.light-mode .nav-links { color: var(--muted); }
+body.light-mode .control-button, body.light-mode .nav-github { color: var(--ink); border-color: rgba(23,32,39,.3); }
+body.light-mode .hero { color: var(--ink); }
+body.light-mode .hero-message { color: #52646e; }
+body.light-mode .social-links a, body.light-mode .hero-button { color: var(--ink); border-color: var(--ink); }
+body.light-mode .hero-button:hover { color: #fff; border-color: var(--accent); }
 @media (max-width: 700px) {
   .content-width, .nav { width: calc(100% - 38px); }
   .nav-links { display: none; }
+  .nav-actions { margin-left: auto; margin-right: 12px; }
   .hero h1 { font-size: 54px; }
   .about-section, .skills-section, .experience-section, .contact-section { padding: 90px 0; }
   .about-grid, .experience-main { grid-template-columns: 1fr; gap: 37px; }
