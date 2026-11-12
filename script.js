@@ -53,6 +53,22 @@ let currentRiddle = null;
 let gameAttempts = 0;
 let gameDecisionPending = false;
 
+document.querySelectorAll(".name-word").forEach((word) => {
+  const letters = [...word.textContent];
+  word.replaceChildren(...letters.map((letter) => {
+    const span = document.createElement("span");
+    span.textContent = letter;
+    return span;
+  }));
+  word.addEventListener("pointerdown", () => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      word.classList.remove("neon-tap");
+      window.requestAnimationFrame(() => word.classList.add("neon-tap"));
+      window.setTimeout(() => word.classList.remove("neon-tap"), 1250);
+    }
+  });
+});
+
 const savedTheme = window.localStorage.getItem("portfolio-theme");
 if (savedTheme === "light") {
   document.body.classList.add("light-mode");
