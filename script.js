@@ -9,7 +9,7 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend & Data", "skills.tools": "Tools & Languages", "skills.spanish": "Spanish · Native", "skills.english": "English · Advanced",
     "contact.label": "04 / GET IN TOUCH", "contact.title": "Have an idea?", "contact.titleAccent": "Let’s build it.",
     "contact.description": "If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.",
-    "terminal.section": "LABORATORY", "terminal.heading": "A small interactive profile.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Full-Stack Developer\"", "terminal.location": "\"Dominican Republic / United States\"", "terminal.focus": "\"e-commerce & useful digital products\"", "terminal.status": "\"shipping reliable software with intention\"", "terminal.interactive": "→ Type help to explore Limberth's profile", "terminal.help": "Commands available: cv · contact · game · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.gameStart": "Riddle: what number equals 3 + 3 and 9 - 3? Type your answer or exit.", "terminal.gameWin": "Correct! You solved it in {attempts} attempts.", "terminal.gameLow": "Not quite. Check both operations and try again.", "terminal.gameHigh": "Close, but check both operations and try again.", "terminal.gameInvalid": "Enter 6, 3+3, 9-3, or type exit.", "terminal.gameExit": "Riddle ended. Type game whenever you want to play again.", "terminal.unknown": "Command not found. Type help to see available commands.",
+    "terminal.section": "LABORATORY", "terminal.heading": "A small interactive profile.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Full-Stack Developer\"", "terminal.location": "\"Dominican Republic / United States\"", "terminal.focus": "\"e-commerce & useful digital products\"", "terminal.status": "\"shipping reliable software with intention\"", "terminal.interactive": "→ Type help to explore Limberth's profile", "terminal.help": "Commands available: cv · contact · game · clear", "terminal.prompt": "Type a command to explore.", "terminal.placeholder": "Type help and press Enter...", "terminal.cv": "Preparing your English CV download...", "terminal.contact": "Opening email contact...", "terminal.gameWin": "Correct! You solved it in {attempts} attempts.", "terminal.gameInvalid": "That answer does not match the riddle. Try again or type exit.", "terminal.gameExit": "Riddle ended. Type game whenever you want to play again.", "terminal.unknown": "Command not found. Type help to see available commands.",
     "footer.tagline": "Designed & built with intention.", "footer.top": "Back to top",
   },
   es: {
@@ -22,9 +22,25 @@ const translations = {
     "skills.frontend": "Frontend", "skills.backend": "Backend y datos", "skills.tools": "Herramientas e idiomas", "skills.spanish": "Español · Nativo", "skills.english": "Inglés · Avanzado",
     "contact.label": "04 / CONTACTO", "contact.title": "¿Tienes una idea?", "contact.titleAccent": "Construyámosla.",
     "contact.description": "Si conoces una oportunidad, tienes una pregunta o simplemente quieres saludar, escríbeme.",
-    "terminal.section": "LABORATORIO", "terminal.heading": "Un pequeño perfil interactivo.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Desarrollador Full-Stack\"", "terminal.location": "\"República Dominicana / Estados Unidos\"", "terminal.focus": "\"e-commerce y productos digitales útiles\"", "terminal.status": "\"entregando software confiable con intención\"", "terminal.interactive": "→ Escribe help para explorar el perfil de Limberth", "terminal.help": "Comandos disponibles: cv · contact · game · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.gameStart": "Adivinanza: ¿qué número es igual a 3 + 3 y a 9 - 3? Escribe tu respuesta o exit.", "terminal.gameWin": "¡Correcto! Lo resolviste en {attempts} intentos.", "terminal.gameLow": "No exactamente. Revisa ambas operaciones e inténtalo otra vez.", "terminal.gameHigh": "Casi. Revisa ambas operaciones e inténtalo otra vez.", "terminal.gameInvalid": "Escribe 6, 3+3, 9-3 o exit.", "terminal.gameExit": "Adivinanza terminada. Escribe game cuando quieras volver a jugar.", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
+    "terminal.section": "LABORATORIO", "terminal.heading": "Un pequeño perfil interactivo.", "terminal.title": "limberth@portfolio — ts-node", "terminal.name": "\"Limberth Romero\"", "terminal.role": "\"Desarrollador Full-Stack\"", "terminal.location": "\"República Dominicana / Estados Unidos\"", "terminal.focus": "\"e-commerce y productos digitales útiles\"", "terminal.status": "\"entregando software confiable con intención\"", "terminal.interactive": "→ Escribe help para explorar el perfil de Limberth", "terminal.help": "Comandos disponibles: cv · contact · game · clear", "terminal.prompt": "Escribe un comando para explorar.", "terminal.placeholder": "Escribe help y presiona Enter...", "terminal.cv": "Preparando la descarga de tu CV en español...", "terminal.contact": "Abriendo el contacto por correo...", "terminal.gameWin": "¡Correcto! Lo resolviste en {attempts} intentos.", "terminal.gameInvalid": "Esa respuesta no coincide con la adivinanza. Inténtalo otra vez o escribe exit.", "terminal.gameExit": "Adivinanza terminada. Escribe game cuando quieras volver a jugar.", "terminal.unknown": "Comando no encontrado. Escribe help para ver los comandos disponibles.",
     "footer.tagline": "Diseñado y construido con intención.", "footer.top": "Volver arriba",
   },
+};
+const mathRiddles = {
+  en: [
+    { prompt: "Riddle: what number equals 3 + 3 and 9 - 3? Type your answer or exit.", answers: ["6", "3+3", "9-3"] },
+    { prompt: "Riddle: what number equals 4 + 4 and 12 - 4? Type your answer or exit.", answers: ["8", "4+4", "12-4"] },
+    { prompt: "Riddle: what number equals 5 + 5 and 15 - 5? Type your answer or exit.", answers: ["10", "5+5", "15-5"] },
+    { prompt: "Riddle: what number equals 2 × 4 and 16 ÷ 2? Type your answer or exit.", answers: ["8", "2*4", "2x4", "16/2"] },
+    { prompt: "Riddle: what number equals 7 + 5 and 20 - 8? Type your answer or exit.", answers: ["12", "7+5", "20-8"] },
+  ],
+  es: [
+    { prompt: "Adivinanza: ¿qué número es igual a 3 + 3 y a 9 - 3? Escribe tu respuesta o exit.", answers: ["6", "3+3", "9-3"] },
+    { prompt: "Adivinanza: ¿qué número es igual a 4 + 4 y a 12 - 4? Escribe tu respuesta o exit.", answers: ["8", "4+4", "12-4"] },
+    { prompt: "Adivinanza: ¿qué número es igual a 5 + 5 y a 15 - 5? Escribe tu respuesta o exit.", answers: ["10", "5+5", "15-5"] },
+    { prompt: "Adivinanza: ¿qué número es igual a 2 × 4 y a 16 ÷ 2? Escribe tu respuesta o exit.", answers: ["8", "2*4", "2x4", "16/2"] },
+    { prompt: "Adivinanza: ¿qué número es igual a 7 + 5 y a 20 - 8? Escribe tu respuesta o exit.", answers: ["12", "7+5", "20-8"] },
+  ],
 };
 let language = "en";
 const typing = document.querySelector("#typing");
@@ -33,7 +49,7 @@ const terminalForm = document.querySelector("#terminal-form");
 const terminalInput = document.querySelector("#terminal-input");
 const terminalScreen = document.querySelector("#terminal-output");
 const terminalOutput = document.querySelector("#terminal-results");
-let gameTarget = null;
+let currentRiddle = null;
 let gameAttempts = 0;
 
 const savedTheme = window.localStorage.getItem("portfolio-theme");
@@ -116,32 +132,29 @@ terminalForm.addEventListener("submit", (event) => {
 
   if (command === "clear") {
     terminalOutput.replaceChildren();
-    gameTarget = null;
+    currentRiddle = null;
     gameAttempts = 0;
     terminalScreen.classList.remove("game-mode");
     return;
   }
-  if (gameTarget !== null && command === "exit") {
-    gameTarget = null;
+  if (currentRiddle !== null && command === "exit") {
+    currentRiddle = null;
     gameAttempts = 0;
     terminalScreen.classList.remove("game-mode");
     addTerminalLine(translations[language]["terminal.gameExit"], "terminal-muted");
     return;
   }
-  if (gameTarget !== null) {
-    const guess = Number(command);
+  if (currentRiddle !== null) {
     const answer = command.replace(/\s+/g, "");
-    if (!["6", "3+3", "9-3"].includes(answer)) {
+    if (!currentRiddle.answers.includes(answer)) {
       addTerminalLine(translations[language]["terminal.gameInvalid"], "terminal-muted");
       return;
     }
     gameAttempts += 1;
-    if (answer === "6" || answer === "3+3" || answer === "9-3") {
-      addTerminalLine(translations[language]["terminal.gameWin"].replace("{attempts}", gameAttempts), "terminal-success");
-      gameTarget = null;
-      gameAttempts = 0;
-      terminalScreen.classList.remove("game-mode");
-    }
+    addTerminalLine(translations[language]["terminal.gameWin"].replace("{attempts}", gameAttempts), "terminal-success");
+    currentRiddle = null;
+    gameAttempts = 0;
+    terminalScreen.classList.remove("game-mode");
     return;
   }
   if (command === "help") {
@@ -151,9 +164,10 @@ terminalForm.addEventListener("submit", (event) => {
   if (command === "game") {
     terminalOutput.replaceChildren();
     terminalScreen.classList.add("game-mode");
-    gameTarget = 6;
+    const riddles = mathRiddles[language];
+    currentRiddle = riddles[Math.floor(Math.random() * riddles.length)];
     gameAttempts = 0;
-    addTerminalLine(translations[language]["terminal.gameStart"], "terminal-success");
+    addTerminalLine(currentRiddle.prompt, "terminal-success");
     return;
   }
   addTerminalLine(`$ ${command}`, "terminal-command");
