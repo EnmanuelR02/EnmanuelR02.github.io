@@ -287,3 +287,31 @@ body.light-mode .skill-column p { color: var(--ink); }
 body.light-mode .contact-email { color: #0d8f88; border-color: #0d8f88; }
 body.light-mode .footer { color: #536871; background: rgba(239,245,244,.9); border-color: rgba(23,32,39,.14); }
 body.light-mode .footer a { color: #0d8f88; }
+
+@media (max-width: 700px) {
+  .contact-inner {
+    display: block;
+    width: calc(100% - 38px);
+    min-width: 0;
+  }
+  .contact-copy {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 72px;
+  }
+  .contact-inner h2 {
+    width: 100%;
+    margin-top: 40px;
+    font-size: clamp(36px, 11vw, 58px);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .contact-inner > p:not(.section-number) {
+    width: 100%;
+    max-width: 100%;
+  }
+  .contact-terminal {
+    width: 100%;
+    min-width: 0;
+  }
+}
