@@ -54,6 +54,55 @@ document.querySelector("#theme-toggle").addEventListener("click", (event) => {
   event.currentTarget.textContent = light ? "☾" : "☼";
 });
 
+const canvas = document.querySelector("#particle-canvas");
+const context = canvas.getContext("2d");
+const particles = [];
+
+function resizeCanvas() {
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+}
+
+function createParticles() {
+  particles.length = 0;
+  const count = Math.min(95, Math.floor(window.innerWidth / 13));
+  for (let particleIndex = 0; particleIndex < count; particleIndex += 1) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.random() * 2.4 + .5,
+      speed: Math.random() * .28 + .08,
+      drift: (Math.random() - .5) * .18,
+      color: Math.random() > .83 ? "#f0b77a" : "#8de7df",
+    });
+  }
+}
+
+function animateParticles() {
+  context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  particles.forEach((particle) => {
+    particle.y -= particle.speed;
+    particle.x += particle.drift;
+    if (particle.y < -10) particle.y = window.innerHeight + 10;
+    if (particle.x < -10) particle.x = window.innerWidth + 10;
+    if (particle.x > window.innerWidth + 10) particle.x = -10;
+    context.globalAlpha = .25 + particle.size / 4;
+    context.fillStyle = particle.color;
+    context.fillRect(particle.x, particle.y, particle.size, particle.size);
+  });
+  requestAnimationFrame(animateParticles);
+}
+
+resizeCanvas();
+createParticles();
+window.addEventListener("resize", () => {
+  resizeCanvas();
+  createParticles();
+});
+animateParticles();
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
