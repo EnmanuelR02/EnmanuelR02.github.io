@@ -1,21 +1,27 @@
 const translations = {
   en: {
     "nav.about": "About", "nav.experience": "Experience", "nav.skills": "Skills", "nav.contact": "Contact",
-    "hero.kicker": "Full-Stack Developer · Dominican Republic", "hero.button": "More about me ↓", "hero.cv": "Download CV",
-    "about.label": "01 / ABOUT ME", "about.title": "Building useful", "about.titleAccent": "digital experiences.",
-    "experience.label": "02 / EXPERIENCE", "skills.label": "03 / SKILLS", "skills.title": "Tools for turning",
+    "hero.kicker": "Full-Stack Developer · Dominican Republic", "hero.button": "More about me ↓", "hero.cv": "Download CV", "hero.contact": "Contact me", "hero.scroll": "Scroll to explore",
+    "about.label": "01 / ABOUT ME", "about.title": "Building useful", "about.titleAccent": "digital experiences.", "about.paragraphOne": "My name is Limberth Enmanuel Romero Santos. I am a Full-Stack Developer committed to continuous learning and focused on crafting scalable, logical solutions in an ever-evolving technology landscape.", "about.paragraphTwo": "At Pixel Media, I develop and optimize e-commerce experiences with React and Next.js, connect APIs and payment systems, and build backend features that make products faster and easier to use.", "about.link": "Let’s work together",
+    "experience.label": "02 / EXPERIENCE", "experience.note": "A selection of the work behind my experience.", "experience.pixel.location": "La Vega, Dominican Republic", "experience.pixel.role": "Frontend / Full-Stack Developer", "experience.pixel.summary": "Developed an Amazon-style e-commerce platform that allows the company to sell products online and design them virtually.", "experience.pixel.pointOne": "Improved speed, SEO and mobile experience to expand customer reach.", "experience.pixel.pointTwo": "Built REST APIs, backend features and JWT authentication.", "experience.academic.label": "Academic project", "experience.academic.eyebrow": "Capstone project", "experience.academic.role": "Academic management system", "experience.academic.summary": "A web-based system built with the PERN stack, including role-based access control and a structured approach to estimating system size.", "experience.academic.pointOne": "Designed role-based access for different academic users.", "experience.academic.pointTwo": "Structured the system around PostgreSQL, Express, React and Node.js.",
+    "skills.label": "03 / SKILLS", "skills.title": "Tools for turning",
     "skills.titleAccent": "ideas into reality.", "skills.description": "My toolkit combines frontend craft, backend architecture, databases and the habits that keep a project moving.",
+    "skills.frontend": "Frontend", "skills.backend": "Backend & Data", "skills.tools": "Tools & Languages", "skills.spanish": "Spanish · Native", "skills.english": "English · Advanced",
     "contact.label": "04 / GET IN TOUCH", "contact.title": "Have an idea?", "contact.titleAccent": "Let’s build it.",
     "contact.description": "If you know of an opportunity, have a question, or just want to say hi, feel free to reach out.",
+    "footer.tagline": "Designed & built with intention.", "footer.top": "Back to top",
   },
   es: {
     "nav.about": "Sobre mí", "nav.experience": "Experiencia", "nav.skills": "Habilidades", "nav.contact": "Contacto",
-    "hero.kicker": "Desarrollador Full-Stack · República Dominicana", "hero.button": "Conoce más sobre mí ↓", "hero.cv": "Descargar CV",
-    "about.label": "01 / SOBRE MÍ", "about.title": "Construyendo", "about.titleAccent": "experiencias digitales.",
-    "experience.label": "02 / EXPERIENCIA", "skills.label": "03 / HABILIDADES", "skills.title": "Herramientas para convertir",
+    "hero.kicker": "Desarrollador Full-Stack · República Dominicana", "hero.button": "Conoce más sobre mí ↓", "hero.cv": "Descargar CV", "hero.contact": "Contáctame", "hero.scroll": "Desplázate para explorar",
+    "about.label": "01 / SOBRE MÍ", "about.title": "Construyendo", "about.titleAccent": "experiencias digitales.", "about.paragraphOne": "Mi nombre es Limberth Enmanuel Romero Santos. Soy Desarrollador Full-Stack, comprometido con el aprendizaje continuo y enfocado en crear soluciones escalables y lógicas dentro de un panorama tecnológico en constante evolución.", "about.paragraphTwo": "En Pixel Media desarrollo y optimizo experiencias de comercio electrónico con React y Next.js, conecto APIs y sistemas de pago, y construyo funcionalidades backend que hacen los productos más rápidos y fáciles de usar.", "about.link": "Trabajemos juntos",
+    "experience.label": "02 / EXPERIENCIA", "experience.note": "Una selección del trabajo detrás de mi experiencia.", "experience.pixel.location": "La Vega, República Dominicana", "experience.pixel.role": "Desarrollador Frontend / Full-Stack", "experience.pixel.summary": "Desarrollé una plataforma de comercio electrónico estilo Amazon que permite vender productos en línea y diseñarlos virtualmente.", "experience.pixel.pointOne": "Mejoré la velocidad, el SEO y la experiencia móvil para ampliar el alcance a clientes.", "experience.pixel.pointTwo": "Construí APIs REST, funcionalidades backend y autenticación con JWT.", "experience.academic.label": "Proyecto académico", "experience.academic.eyebrow": "Proyecto de grado", "experience.academic.role": "Sistema de gestión académica", "experience.academic.summary": "Sistema web desarrollado con el stack PERN, incluyendo control de acceso por roles y un enfoque estructurado para estimar el tamaño del sistema.", "experience.academic.pointOne": "Diseñé acceso basado en roles para distintos usuarios académicos.", "experience.academic.pointTwo": "Estructuré el sistema alrededor de PostgreSQL, Express, React y Node.js.",
+    "skills.label": "03 / HABILIDADES", "skills.title": "Herramientas para convertir",
     "skills.titleAccent": "ideas en realidad.", "skills.description": "Mi conjunto de herramientas combina frontend, arquitectura backend, bases de datos y hábitos que mantienen cada proyecto avanzando.",
+    "skills.frontend": "Frontend", "skills.backend": "Backend y datos", "skills.tools": "Herramientas e idiomas", "skills.spanish": "Español · Nativo", "skills.english": "Inglés · Avanzado",
     "contact.label": "04 / CONTACTO", "contact.title": "¿Tienes una idea?", "contact.titleAccent": "Construyámosla.",
     "contact.description": "Si conoces una oportunidad, tienes una pregunta o simplemente quieres saludar, escríbeme.",
+    "footer.tagline": "Diseñado y construido con intención.", "footer.top": "Volver arriba",
   },
 };
 let language = "en";
