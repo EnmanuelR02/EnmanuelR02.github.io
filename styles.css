@@ -222,7 +222,7 @@ body.cursor-active:has(a:hover) .cursor-ring, body.cursor-active:has(button:hove
 .terminal-url em { color: var(--warm); font-style: normal; }
 .terminal-json { margin: 0 0 16px; color: #d3dddb; font: 13px/1.65 var(--mono); white-space: pre-wrap; }
 .terminal-key { color: var(--accent); }
-.terminal-type { color: #b7a4ff; }
+.terminal-type { color: #76c7ff; text-shadow: 0 0 10px rgba(118,199,255,.18); }
 .terminal-string { color: var(--warm); }
 .terminal-bracket { color: #b7c8c5; }
 .terminal-muted { color: #526a6d; }
