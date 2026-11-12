@@ -12,3 +12,17 @@ function typeMessage() {
 
 window.setTimeout(typeMessage, 500);
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.18 },
+);
+
+document.querySelectorAll(".animate-in").forEach((element) => revealObserver.observe(element));
