@@ -80,6 +80,7 @@ a { color: inherit; text-decoration: none; }
 .hero-button-primary { color: #0a0d13; border-color: var(--accent); background: var(--accent); box-shadow: 0 12px 30px rgba(141,231,223,.2); }
 .hero-button-secondary { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.04); }
 .hero-button span { font-size: 16px; }
+.hero-button .hero-icon { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; color: inherit; font-family: var(--mono); font-size: 21px; font-variant-emoji: text; line-height: 1; }
 .scroll-hint { position: absolute; z-index: 1; bottom: 30px; left: 50%; color: #7f898f; transform: translateX(-50%); }
 .scroll-hint span { color: var(--accent); margin-left: 8px; }
 .light-section { background: var(--paper); }
