@@ -1,29 +1,14 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const siteNav = document.querySelector(".site-nav");
+const message = "Passionate about building useful products with technology.";
+const typing = document.querySelector("#typing");
+let index = 0;
 
-menuToggle?.addEventListener("click", () => {
-  const isOpen = siteNav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
+function typeMessage() {
+  if (index < message.length) {
+    typing.textContent += message[index];
+    index += 1;
+    window.setTimeout(typeMessage, 42);
+  }
+}
 
-document.querySelectorAll(".site-nav a").forEach((link) => {
-  link.addEventListener("click", () => {
-    siteNav.classList.remove("open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-  });
-});
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 },
-);
-
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+window.setTimeout(typeMessage, 500);
 document.querySelector("#year").textContent = new Date().getFullYear();
